@@ -1,6 +1,6 @@
 import apikey from "./apikey";
 
-const Home = (argument) => {
+const Home = (argument, requestNumber=0) => {
   const preparePage = () => {
     let cleanedArgument = argument.replace(/\s+/g, "-");
     let articles = "";
@@ -16,6 +16,7 @@ const Home = (argument) => {
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
+          if (requestNumber===0&&response.results.length>9)response.results=response.results.slice(0,9);
           response.results.forEach((article) => {
             let hardware = '';
             if (article.platforms!==null){
@@ -36,9 +37,9 @@ const Home = (argument) => {
                     ${hardware}
                   </div>
                 `;
-            
           });
           document.querySelector(".page-list .page-list__articles").innerHTML = articles;
+          if (requestNumber===0) document.querySelector(".showMore").innerHTML = `<button class='showMore__showMoreButton'>Show More...</button>`;
         });
     };
 

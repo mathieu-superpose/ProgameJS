@@ -1,4 +1,4 @@
-$color-red: rgb(255, 20, 20);
+$color-red: rgb(209, 10, 49);
 $color-white: rgb(255,255,255);
 
 @font-face
@@ -120,3 +120,20 @@ footer
 	width: 200px;
 	background-color: $color-red;
 }
+.showMore
+{
+	display:flex;
+	justify-content: center;
+}
+.showMore__showMoreButton
+{
+	background-color: $color-red;
+	font-family: 'MetropolisBold';
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+ }
