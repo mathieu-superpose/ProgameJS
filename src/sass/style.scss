@@ -120,6 +120,11 @@ footer
 	width: 200px;
 	background-color: $color-red;
 }
+.showMore
+{
+	display:flex;
+	justify-content: center;
+}
 .showMore__showMoreButton
 {
 	background-color: $color-red;
