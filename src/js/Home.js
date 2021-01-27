@@ -11,7 +11,7 @@ const Home = (argument) => {
       if (argument) {
         finalURL = url + argument;
       }else{
-        finalURL = url + '&dates=2022-01-01,2022-12-31';
+        finalURL = url + '&dates=2021-01-01,2021-12-31';
       }
       fetch(`${finalURL}`)
         .then((response) => response.json())
@@ -26,6 +26,7 @@ const Home = (argument) => {
             let bgr_image ='';
             if (article.background_image!==null)bgr_image=article.background_image;
             if (article.background_image==null)bgr_image='./src/images/the_hype_progame_logo.svg';
+            if (article.name.length>28)article.name= article.name.slice(0,28);
               articles += `
                   <div class="page-list__articles__cardGame">
                     <div class="page-list__articles__cardGame__cardImage">
