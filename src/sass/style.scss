@@ -105,3 +105,18 @@ body
 	margin-bottom: 20px;
 	margin-right: 10px;
 }
+footer
+{
+	align-self: flex-start;
+}
+.footer__elements
+{
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+.footer__elements__bar
+{
+	height: 10px;
+	width: 200px;
+	background-color: $color-red;
+}
