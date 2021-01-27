@@ -24,11 +24,18 @@ H2
 	color: $color-white;
 	font-size: 48px;
 }
+H3
+{
+	font-family: 'MetropolisBold';
+	color: $color-white;
+	font-size: 24px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 p
 {
 	color: $color-white;
 	font-size: 16px;
-	
 	line-height: 1.4em;
 }
 body
@@ -81,4 +88,20 @@ body
     align-items: center;
     text-align: center;
   }
+}
+.page-list__articles
+{
+	display: flex;
+	flex-wrap: wrap;
+   	justify-content: space-between;
+}
+.page-list__articles__cardGame__cardImage-image
+{
+	width: 300px;
+	height: 180px;
+}
+.page-list__articles__cardGame-platformImage
+{
+	margin-bottom: 20px;
+	margin-right: 10px;
 }
