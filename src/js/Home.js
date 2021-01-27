@@ -23,18 +23,19 @@ const Home = (argument) => {
               hardware += `<img class='page-list__articles__cardGame-platformImage' src="./src/images/${machine.platform.slug}.svg">`
               });
             }
-            
-            if (article.background_image!==null){
+            let bgr_image ='';
+            if (article.background_image!==null)bgr_image=article.background_image;
+            if (article.background_image==null)bgr_image='./src/images/the_hype_progame_logo.svg';
               articles += `
                   <div class="page-list__articles__cardGame">
                     <div class="page-list__articles__cardGame__cardImage">
-                      <img class='page-list__articles__cardGame__cardImage-image' src="${article.background_image}">
+                      <img class='page-list__articles__cardGame__cardImage-image' src="${bgr_image}">
                     </div>
                     <h3 href = "#pagedetail/${article.id}">${article.name}</h3>
                     ${hardware}
                   </div>
                 `;
-            }
+            
           });
           document.querySelector(".page-list .page-list__articles").innerHTML = articles;
         });
