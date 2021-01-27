@@ -17,13 +17,19 @@ const Home = (argument) => {
         .then((response) => response.json())
         .then((response) => {
           response.results.forEach((article) => {
-            console.log(article.background_image);
+            let hardware = '';
+            if (article.platforms!==null){
+              article.platforms.forEach((machine) => {
+              hardware += `<img class='platform' src="./src/images/${machine.platform.slug}.svg">`
+              });
+            }
+            
             if (article.background_image!==null){
               articles += `
                   <div class="page-list__articles__cardGame">
                     <img class='miniimage' src="${article.background_image}">
                     <h3 href = "#pagedetail/${article.id}">${article.name}</h3>
-                    <div></div>
+                    ${hardware}
                   </div>
                 `;
             }
