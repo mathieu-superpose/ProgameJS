@@ -1,5 +1,7 @@
 import '../sass/style.scss';
 
+import apikey from "./apikey";
+
 import Home from "./Home";
 import {PageList} from "./PageList";
 import {PageDetail} from "./PageDetail";
