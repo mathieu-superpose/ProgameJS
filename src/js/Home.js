@@ -39,6 +39,7 @@ const Home = (argument, requestNumber=0) => {
                 `;
           });
           document.querySelector(".page-list .page-list__articles").innerHTML = articles;
+          if (requestNumber===0) document.querySelector(".showMore").innerHTML = `<button class='.showMore__showMoreButton'>Show More...</button>`;
         });
     };
 
