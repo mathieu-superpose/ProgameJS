@@ -36,7 +36,6 @@ const Home = (argument) => {
                     ${hardware}
                   </div>
                 `;
-            
           });
           document.querySelector(".page-list .page-list__articles").innerHTML = articles;
         });
