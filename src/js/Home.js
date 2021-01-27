@@ -27,7 +27,9 @@ const Home = (argument) => {
             if (article.background_image!==null){
               articles += `
                   <div class="page-list__articles__cardGame">
-                    <img class='miniimage' src="${article.background_image}">
+                    <div class="page-list__articles__cardGame__cardImage">
+                      <img class='age-list__articles__cardGame__cardImage-image' src="${article.background_image}">
+                    </div>
                     <h3 href = "#pagedetail/${article.id}">${article.name}</h3>
                     ${hardware}
                   </div>
