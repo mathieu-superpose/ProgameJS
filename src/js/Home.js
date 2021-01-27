@@ -20,7 +20,7 @@ const Home = (argument) => {
             let hardware = '';
             if (article.platforms!==null){
               article.platforms.forEach((machine) => {
-              hardware += `<img class='platform' src="./src/images/${machine.platform.slug}.svg">`
+              hardware += `<img class='page-list__articles__cardGame-platformImage' src="./src/images/${machine.platform.slug}.svg">`
               });
             }
             
@@ -28,7 +28,7 @@ const Home = (argument) => {
               articles += `
                   <div class="page-list__articles__cardGame">
                     <div class="page-list__articles__cardGame__cardImage">
-                      <img class='age-list__articles__cardGame__cardImage-image' src="${article.background_image}">
+                      <img class='page-list__articles__cardGame__cardImage-image' src="${article.background_image}">
                     </div>
                     <h3 href = "#pagedetail/${article.id}">${article.name}</h3>
                     ${hardware}
