@@ -31,10 +31,12 @@ const Home = (argument, requestNumber = 0) => {
                         articles += `
                         <div class="page-list__articles__cardGame">
                           <div class="page-list__articles__cardGame__container">
-                            <img class="page-list__articles__cardGame__container__image" src="http://placehold.it/257x200.jpg" />
-                              <div class="page-list__articles__cardGame__container__layer">
-                                <p class="page-list__articles__cardGame__container__layer__description">This image looks super neat.</p>
-                              </div>
+                            <a href="#pagedetail/${article.id}/">
+                                <img class="page-list__articles__cardGame__container__image" src="http://placehold.it/257x200.jpg" />
+                                <div class="page-list__articles__cardGame__container__layer">
+                                    <p class="page-list__articles__cardGame__container__layer__description">This image looks super neat.</p>
+                                </div>
+                            </a>
                           </div>
                           <h3>${article.name}</h3>
                           ${hardware}
