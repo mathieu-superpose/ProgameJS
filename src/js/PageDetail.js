@@ -9,10 +9,9 @@ const PageDetail = (argument) => {
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
-          let { name, released, description } = response;
-
+          let { name, released, description, background_image } = response;
           let articleDOM = document.querySelector(".page-detail .article");
-
+          articleDOM.querySelector(".banner img").src = background_image;
           articleDOM.querySelector("h1.title").innerHTML = name;
           articleDOM.querySelector("p.release-date span").innerHTML = released;
           articleDOM.querySelector("p.description").innerHTML = description;
@@ -26,6 +25,9 @@ const PageDetail = (argument) => {
     pageContent.innerHTML = `
       <section class="page-detail">
         <div class="article">
+          <div class="banner">
+            <img class='page-list__articles__cardGame__cardImage-image' src="">
+          </div>
           <h1 class="title"></h1>
           <p class="release-date">Release date : <span></span></p>
           <p class="description"></p>
@@ -36,6 +38,16 @@ const PageDetail = (argument) => {
     preparePage();
   };
 
+  const setWelcome = () => {
+        document.querySelector('.welcome').innerHTML = ``;
+    };
+
+  const setbutton = () => {
+      document.querySelector('.showMore').innerHTML = ``;
+  };
+
+  setWelcome();
+  setbutton();
   render();
 };
 
