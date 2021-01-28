@@ -17,7 +17,7 @@ const PageDetail = (argument) => {
 
           let articleDOM = document.querySelector(".pageDetail .pageDetail__article");
           articleDOM.querySelector("h1.pageDetail__article__head__title").innerHTML = name;
-          articleDOM.querySelector("p.pageDetail__article__head__rating").innerHTML = `${rating}/5 - ${ratings_count} votes`;
+          articleDOM.querySelector("h3.pageDetail__article__head__rating").innerHTML = `${rating}/5 - ${ratings_count} votes`;
           articleDOM.querySelector("p.pageDetail__article__releaseDate span").innerHTML = released;
           articleDOM.querySelector("p.pageDetail__article__description").innerHTML = description;
 
@@ -40,7 +40,7 @@ const PageDetail = (argument) => {
         <div class="pageDetail__article">
           <div class="pageDetail__article__head">
             <h1 class="pageDetail__article__head__title"></h1>
-            <p class="pageDetail__article__head__rating"></p>
+            <h3 class="pageDetail__article__head__rating"></h3>
           </div>
           <p class="pageDetail__article__releaseDate">Release date : <span></span></p>
           <p class="pageDetail__article__description"></p>

@@ -201,7 +201,9 @@ footer
 .pageDetail__article__head
 {
 	display:flex;
+	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
 .pageDetail__article__head__title
 {
