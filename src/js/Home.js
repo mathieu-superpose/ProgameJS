@@ -31,9 +31,11 @@ const Home = (argument, requestNumber=0) => {
               articles += `
                   <div class="page-list__articles__cardGame">
                     <div class="page-list__articles__cardGame__cardImage">
-                      <img class='page-list__articles__cardGame__cardImage-image' src="${bgr_image}">
+                      <a href="#pagedetail/${article.id}/">
+                        <img class='page-list__articles__cardGame__cardImage-image' src="${bgr_image}">
+                      </a>
                     </div>
-                    <h3 href = "#pagedetail/${article.id}">${article.name}</h3>
+                    <h3>${article.name}</h3>
                     ${hardware}
                   </div>
                 `;
