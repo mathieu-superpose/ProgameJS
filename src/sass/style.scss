@@ -175,9 +175,20 @@ footer
 {
   transform: translateY(0);
 }
-.pageDetail__article__title
+.pageDetail__article__head
+{
+	display:flex;
+	justify-content: space-between;
+}
+.pageDetail__article__head__title
 {
 	color: $color-white;
+}
+.pageDetail__article__head__rating
+{
+	font-family: 'MetropolisBold';
+	color: $color-red;
+	font-size: 20px;
 }
 .pageDetail__article__banner
 {
