@@ -27,53 +27,52 @@ const PageDetail = (argument) => {
       }
  
       fetch(`${finalURL}`)
+      .then((response) => response.json())
+      .then((response) => {
+        
+        let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores, clip, slug } = response;
+
+        let pageDetailDOM = document.querySelector(".pageDetail");
+
+        let bannerDOM = pageDetailDOM.querySelector(".pageDetail__banner");
+        bannerDOM.querySelector(".pageDetail__banner img").src = background_image;
+        bannerDOM.querySelector(".pageDetail__banner__form").action = website;
+
+        let articleDOM = pageDetailDOM.querySelector(".pageDetail__article");
+        articleDOM.querySelector("h1.pageDetail__article__head__title").innerHTML = name;
+        articleDOM.querySelector("h3.pageDetail__article__head__rating").innerHTML = getRating(rating, ratings_count);
+        articleDOM.querySelector("p.pageDetail__article__description").innerHTML = description;
+
+        let details1DOM = articleDOM.querySelector(".pageDetail__article__details1");
+        details1DOM.querySelector("p.pageDetail__article__details1__releaseDate span").innerHTML = released;
+        details1DOM.querySelector("p.pageDetail__article__details1__developer span").innerHTML = developers[0].name;
+        details1DOM.querySelector("p.pageDetail__article__details1__platforms span").innerHTML = getPlatforms(platforms);
+        details1DOM.querySelector("p.pageDetail__article__details1__publishers span").innerHTML = publishers[0].name;
+        
+        let details2DOM = articleDOM.querySelector(".pageDetail__article__details2");
+        details2DOM.querySelector("p.pageDetail__article__details2__genres span").innerHTML = getGenres(genres);
+        details2DOM.querySelector("p.pageDetail__article__details2__tags span").innerHTML = getTags(tags);
+
+        let buyDOM = articleDOM.querySelector(".pageDetail__article__buy");
+        buyDOM.querySelector("p.pageDetail__article__buy__stores span").innerHTML = getStores(stores);
+
+        let trailerDOM = articleDOM.querySelector(".pageDetail__article__trailer");
+        trailerDOM.querySelector("video.pageDetail__article__trailer__video").src = clip.clip;
+
+        if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__head__title").style.fontSize = "24px";
+
+        let screenDOM = articleDOM.querySelector(".pageDetail__article__screenshots");
+
+        fetch(`${finalURL}/screenshots?page_size=4`)
         .then((response) => response.json())
         .then((response) => {
-          
-          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores, clip, slug } = response;
-
-          let pageDetailDOM = document.querySelector(".pageDetail");
-
-          let bannerDOM = pageDetailDOM.querySelector(".pageDetail__banner");
-          bannerDOM.querySelector(".pageDetail__banner img").src = background_image;
-          bannerDOM.querySelector(".pageDetail__banner__form").action = website;
-
-          let articleDOM = pageDetailDOM.querySelector(".pageDetail__article");
-          articleDOM.querySelector("h1.pageDetail__article__head__title").innerHTML = name;
-          articleDOM.querySelector("h3.pageDetail__article__head__rating").innerHTML = getRating(rating, ratings_count);
-          articleDOM.querySelector("p.pageDetail__article__description").innerHTML = description;
-
-          let details1DOM = articleDOM.querySelector(".pageDetail__article__details1");
-          details1DOM.querySelector("p.pageDetail__article__details1__releaseDate span").innerHTML = released;
-          details1DOM.querySelector("p.pageDetail__article__details1__developer span").innerHTML = developers[0].name;
-          details1DOM.querySelector("p.pageDetail__article__details1__platforms span").innerHTML = getPlatforms(platforms);
-          details1DOM.querySelector("p.pageDetail__article__details1__publishers span").innerHTML = publishers[0].name;
-          
-          let details2DOM = articleDOM.querySelector(".pageDetail__article__details2");
-          details2DOM.querySelector("p.pageDetail__article__details2__genres span").innerHTML = getGenres(genres);
-          details2DOM.querySelector("p.pageDetail__article__details2__tags span").innerHTML = getTags(tags);
-
-          let buyDOM = articleDOM.querySelector(".pageDetail__article__buy");
-          buyDOM.querySelector("p.pageDetail__article__buy__stores span").innerHTML = getStores(stores);
-
-          let trailerDOM = articleDOM.querySelector(".pageDetail__article__trailer");
-          trailerDOM.querySelector("video.pageDetail__article__trailer__video").src = clip.clip;
-
-          if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__head__title").style.fontSize = "24px";
-
-          // fetch(`https://api.rawg.io/api/games/${slug}/screenshots?page_size=4`)
-          // .then((response) => response.json())
-          // .then((response) => {
-          // let images = [];
-          // response.results.forEach(image => images.push(image.image));
-
-          // let screenDOM = document.querySelector(".pageDetail .pageDetail__article .pageDetail__article__screenshots");
-          // screenDOM.querySelector(".pageDetail__article__screenshots__one img").src = images[0];
-          // screenDOM.querySelector("img.pageDetail__article__screenshots__two img").src = images[1];
-          // screenDOM.querySelector("img.pageDetail__article__screenshots__three img").src = images[2];
-          // screenDOM.querySelector("img.pageDetail__article__screenshots__four img").src = images[3];
-          // });
+          let screenshots = response.results;
+            screenshots.forEach(image =>
+              screenDOM.querySelector(".pageDetail__article__screenshots__container").innerHTML += `
+              <img class='pageDetail__article__screenshots__container__image' src="${image.image}">
+              `)
         });
+      });
     };
 
     fetchGame("https://api.rawg.io/api/games/", cleanedArgument);
@@ -117,10 +116,7 @@ const PageDetail = (argument) => {
           </div>
           <div class="pageDetail__article__screenshots">
             <h1 class="pageDetail__article__screenshots__title">SCREENSHOTS</h1>
-            <img class='pageDetail__article__screenshots__one' src="">
-            <img class='pageDetail__article__screenshots__two' src="">
-            <img class='pageDetail__article__screenshots__three' src="">
-            <img class='pageDetail__article__screenshots__four' src="">
+            <div class='pageDetail__article__screenshots__container'></div>
           </div>            
         </div>
       </section>
