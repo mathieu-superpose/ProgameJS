@@ -19,18 +19,18 @@ const PageDetail = (argument) => {
 
       const getTags = (tags) => {
         return tags.map(tag=> tag.name).reduce((r, e, i) =>
-    (i % 4 ? r[r.length - 1].push(e) : r.push([e])) && r, []).join('<br>').replace(/,/g, ',  ');
+        (i % 4 ? r[r.length - 1].push(e) : r.push([e])) && r, []).join('<br>').replace(/,/g, ',  ');
       };
 
       const getStores = (stores) => {
         return stores.map(str=>`<a class="pageDetail__article__buy__stores__link" href="${str.url}">${str.store.name}</a>`).join('<br>');
       }
-
+ 
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
-          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores, clip } = response;
+          
+          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores, clip, slug } = response;
 
           let pageDetailDOM = document.querySelector(".pageDetail");
 
@@ -60,6 +60,19 @@ const PageDetail = (argument) => {
           trailerDOM.querySelector("video.pageDetail__article__trailer__video").src = clip.clip;
 
           if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__head__title").style.fontSize = "24px";
+
+          // fetch(`https://api.rawg.io/api/games/${slug}/screenshots?page_size=4`)
+          // .then((response) => response.json())
+          // .then((response) => {
+          // let images = [];
+          // response.results.forEach(image => images.push(image.image));
+
+          // let screenDOM = document.querySelector(".pageDetail .pageDetail__article .pageDetail__article__screenshots");
+          // screenDOM.querySelector(".pageDetail__article__screenshots__one img").src = images[0];
+          // screenDOM.querySelector("img.pageDetail__article__screenshots__two img").src = images[1];
+          // screenDOM.querySelector("img.pageDetail__article__screenshots__three img").src = images[2];
+          // screenDOM.querySelector("img.pageDetail__article__screenshots__four img").src = images[3];
+          // });
         });
     };
 
@@ -101,7 +114,14 @@ const PageDetail = (argument) => {
           <div class="pageDetail__article__trailer">
             <h1 class="pageDetail__article__trailer__title">TRAILER</h1>
             <video class="pageDetail__article__trailer__video" controls><source src="" type="video/mp4"></video>
-          </div>             
+          </div>
+          <div class="pageDetail__article__screenshots">
+            <h1 class="pageDetail__article__screenshots__title">SCREENSHOTS</h1>
+            <img class='pageDetail__article__screenshots__one' src="">
+            <img class='pageDetail__article__screenshots__two' src="">
+            <img class='pageDetail__article__screenshots__three' src="">
+            <img class='pageDetail__article__screenshots__four' src="">
+          </div>            
         </div>
       </section>
     `;
