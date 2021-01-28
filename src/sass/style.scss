@@ -89,22 +89,7 @@ body
     text-align: center;
   }
 }
-.page-list__articles
-{
-	display: flex;
-	flex-wrap: wrap;
-   	justify-content: space-between;
-}
-.page-list__articles__cardGame__cardImage-image
-{
-	width: 300px;
-	height: 180px;
-}
-.page-list__articles__cardGame-platformImage
-{
-	margin-bottom: 20px;
-	margin-right: 10px;
-}
+
 footer
 {
 	align-self: flex-start;
@@ -137,3 +122,56 @@ footer
 	display: inline-block;
 	font-size: 16px;
  }
+.page-list__articles
+{
+	display: flex;
+	flex-wrap: wrap;
+   	justify-content: space-between;
+}
+
+.page-list__articles__cardGame-platformImage
+{
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
+
+
+
+
+.page-list__articles__cardGame__container {
+  position: relative;
+  height: 200px;
+  width: 257px;
+}
+
+.page-list__articles__cardGame__container__layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(36, 62, 206, 0.6);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.page-list__articles__cardGame__container:hover .page-list__articles__cardGame__container__layer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.page-list__articles__cardGame__container__layer__description {
+  transition: .2s;
+  transform: translateY(1em);
+}
+
+.page-list__articles__cardGame__container:hover .page-list__articles__cardGame__container__layer__description {
+  transform: translateY(0);
+}
