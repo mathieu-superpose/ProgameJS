@@ -179,7 +179,26 @@ footer
 {
 	color: $color-white;
 }
+.pageDetail__article__banner
+{
+	position: relative;
+}
 .pageDetail__article__banner__image
 {
 	width:100%;
+}
+.pageDetail__article__banner__button
+{
+	position: absolute;
+	bottom: 50px;
+	right: 50px;
+	background-color: $color-red;
+	font-family: 'MetropolisBold';
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 }
