@@ -13,11 +13,20 @@ const PageDetail = (argument) => {
             return platforms.map(plat=> plat.platform.name).join('<br>');
       };
 
+      const getGenres = (genres) => {
+            return genres.map(genre=> genre.name).join('<br>');
+      };
+
+      const getTags = (tags) => {
+            return tags.map(tag=> tag.name).reduce((r, e, i) =>
+    (i % 4 ? r[r.length - 1].push(e) : r.push([e])) && r, []).join('<br>').replace(/,/g, ',  ');
+      };
+
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
-          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers } = response;
+          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags } = response;
 
           let bannerDOM = document.querySelector(".pageDetail .pageDetail__banner");
           bannerDOM.querySelector(".pageDetail__banner img").src = background_image;
@@ -35,7 +44,8 @@ const PageDetail = (argument) => {
           details1DOM.querySelector("p.pageDetail__article__details1__publishers span").innerHTML = publishers[0].name;
           
           let details2DOM = document.querySelector(".pageDetail .pageDetail__article .pageDetail__article__details2");
-          details2DOM.querySelector("p.pageDetail__article__details2__releaseDate span").innerHTML = released;
+          details2DOM.querySelector("p.pageDetail__article__details2__genres span").innerHTML = getGenres(genres);
+          details2DOM.querySelector("p.pageDetail__article__details2__tags span").innerHTML = getTags(tags);
 
           if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__head__title").style.fontSize = "24px";
         });
@@ -69,8 +79,8 @@ const PageDetail = (argument) => {
             <p class="pageDetail__article__details1__publishers"><b>Publisher</b><br><span></span></p>
           </div>
           <div class="pageDetail__article__details2">
-            <p class="pageDetail__article__details2__releaseDate"><b>Developer</b><br><span></span></p>
-            <p class="pageDetail__article__details2__releaseDate"><b>Release date</b><br><span></span></p>
+            <p class="pageDetail__article__details2__genres"><b>Genres</b><br><span></span></p>
+            <p class="pageDetail__article__details2__tags"><b>Tags</b><br><span></span></p>
           </div>       
         </div>
       </section>
