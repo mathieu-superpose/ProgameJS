@@ -32,7 +32,7 @@ const Home = (argument, requestNumber = 0) => {
                         <div class="page-list__articles__cardGame">
                           <div class="page-list__articles__cardGame__container">
                             <a href="#pagedetail/${article.id}/">
-                                <img class="page-list__articles__cardGame__container__image" src="http://placehold.it/257x200.jpg" />
+                                <img class='page-list__articles__cardGame__cardImage-image' src="${bgr_image}">
                                 <div class="page-list__articles__cardGame__container__layer">
                                     <p class="page-list__articles__cardGame__container__layer__description">This image looks super neat.</p>
                                 </div>
