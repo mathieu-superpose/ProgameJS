@@ -15,6 +15,8 @@ const PageDetail = (argument) => {
           articleDOM.querySelector("h1.pageDetail__article__title").innerHTML = name;
           articleDOM.querySelector("p.pageDetail__article__releaseDate span").innerHTML = released;
           articleDOM.querySelector("p.pageDetail__article__description").innerHTML = description;
+
+          if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__title").style.fontSize = "24px";
         });
     };
 
