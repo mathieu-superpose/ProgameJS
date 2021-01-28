@@ -1,4 +1,5 @@
 import apikey from "./apikey";
+import dayjs from 'dayjs';
 
 const Home = (argument, requestNumber = 0) => {
     const preparePage = () => {
@@ -29,7 +30,7 @@ const Home = (argument, requestNumber = 0) => {
                         if (article.background_image == null) bgr_image = './src/images/the_hype_progame_logo.svg';
                         if (article.name.length > 28) article.name = article.name.slice(0, 28);
                         let gen=''
-                        article.genres.forEach(genre=> gen+=genre.name+' ');
+                        article.genres.forEach(genre=> gen+=genre.name+'<br>');
 
                         articles += `
                         <div class="page-list__articles__cardGame">
@@ -37,7 +38,7 @@ const Home = (argument, requestNumber = 0) => {
                             <a href="#pagedetail/${article.id}/">
                                 <img class='page-list__articles__cardGame__cardImage-image' src="${bgr_image}">
                                 <div class="page-list__articles__cardGame__container__layer">
-                                    <p class="page-list__articles__cardGame__container__layer__description">${article.released}<br>${gen}</p>
+                                    <p class="page-list__articles__cardGame__container__layer__description">${dayjs(article.released).format('MMM YYYY')}<br>-<br>${gen}</p>
                                 </div>
                             </a>
                           </div>
