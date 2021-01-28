@@ -23,14 +23,14 @@ const PageDetail = (argument) => {
       };
 
       const getStores = (stores) => {
-        return stores.map(str=>`<a href="${str.url}">${str.store.name}</a>`).join('<br>');
+        return stores.map(str=>`<a class="pageDetail__article__buy__stores__link" href="${str.url}">${str.store.name}</a>`).join('<br>');
       }
 
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
-          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores } = response;
+          let { name, released, description, background_image, website, rating, ratings_count, developers, platforms, publishers, genres, tags, stores, clip } = response;
 
           let pageDetailDOM = document.querySelector(".pageDetail");
 
@@ -55,6 +55,9 @@ const PageDetail = (argument) => {
 
           let buyDOM = articleDOM.querySelector(".pageDetail__article__buy");
           buyDOM.querySelector("p.pageDetail__article__buy__stores span").innerHTML = getStores(stores);
+
+          let trailerDOM = articleDOM.querySelector(".pageDetail__article__trailer");
+          trailerDOM.querySelector("video.pageDetail__article__trailer__video").src = clip.clip;
 
           if (name.length>20) articleDOM.querySelector("h1.pageDetail__article__head__title").style.fontSize = "24px";
         });
@@ -94,7 +97,11 @@ const PageDetail = (argument) => {
           <div class="pageDetail__article__buy">
             <h1 class="pageDetail__article__buy__title">BUY</h1>
             <p class="pageDetail__article__buy__stores"><span></span></p>
-          </div>              
+          </div>
+          <div class="pageDetail__article__trailer">
+            <h1 class="pageDetail__article__trailer__title">TRAILER</h1>
+            <video class="pageDetail__article__trailer__video" controls><source src="" type="video/mp4"></video>
+          </div>             
         </div>
       </section>
     `;
