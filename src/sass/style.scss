@@ -232,30 +232,98 @@ footer
 	text-decoration-color: $color-red;
 	font-size: 20px;
 }
+.pageDetail__article__trailer__video
+{
+	width: 100%;
+}
+.pageDetail__article__screenshots__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__screenshots__container__image
+{
+	width: 48%;
+	margin-bottom: 40px;
+}
+.pageDetail__article__youfirst__container
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__youfirst__container__imagelink
+{
+	width: 48%;
+}
+.pageDetail__article__youfirst__container__bloc__image
+{
+	width: 100%;
+}
+.pageDetail__article__youfirst__container__details
+{
+	width: 48%;
+
+}
+.pageDetail__article__youtube__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__youtube__container__bloc
+{
+	width: 30%;
+}
+.pageDetail__article__youtube__container__bloc__image
+{
+	width: 100%;
+	margin-top: 20px;
+}
+.pageDetail__article__similar__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__similar__container__bloc
+{
+	width: 30%;
+}
+.pageDetail__article__similar__container__bloc__image
+{
+	width: 100%;
+}
 @media (max-width: 800px) 
 {
-  .header
-  {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .header__item__searchbar
-  {
-  	margin-bottom: 30px;
-  }
-  .pageDetail__article__head
-  {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	backgound-color: $color-white;
-  }
-  .pageDetail__article__head__title
-  {
-	margin-top: 10px;
-	margin-bottom: 10px;
-  }
+	.header
+	{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+	.header__item__searchbar
+	{
+		margin-bottom: 30px;
+	}
+	.pageDetail__article__head
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		backgound-color: $color-white;
+	}
+	.pageDetail__article__head__title
+	{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.pageDetail__article__screenshots__container__image
+	{
+		width: 45%;
+	}
 }
