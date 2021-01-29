@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 const PageDetail = (argument) => {
   const preparePage = () => {
     let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -72,11 +74,114 @@ const PageDetail = (argument) => {
               <img class='pageDetail__article__screenshots__container__image' src="${image.image}">
               `)
         });
+
+        fetch(`${finalURL}/youtube?page_size=4`)
+          .then((response) => response.json())
+          .then((response) => {
+            let youtube = response.results;
+            addYoutube(articleDOM.querySelector(".pageDetail__article__youtube"), youtube)
+        });
+
+
+          fetch(`${finalURL}/suggested?page_size=6`)
+          .then((response) => response.json())
+          .then((response) => {
+            let suggestions = response.results;
+            suggestions.forEach((article) => {
+              articleDOM.querySelector(".pageDetail__article__similar__container").innerHTML +=
+              `
+              <div class="pageDetail__article__similar__container__bloc">
+                <img class="pageDetail__article__similar__container__bloc__image" src="${checkImage(article.background_image)}" alt="${article.name} cover">
+                <a href = "#pagedetail/${article.id}">
+                  <h3>${article.name}</h3>
+                  <p>${findPlatforms(article.parent_platforms)}</p>
+                </a>
+              </div>
+              `;
+            });
+          });
       });
     };
 
     fetchGame("https://api.rawg.io/api/games/", cleanedArgument);
   };
+
+  const checkImage = (image) => {
+    if (image == null){
+      return './src/images/the_hype_progame_logo.svg'
+    } else {
+      return image
+    }
+  }
+
+  const findPlatforms = (platforms) => {
+    let platformsAvailable = "";
+    platforms.forEach(platform => {
+      switch(platform.platform.name) {
+        case "PC":
+        platformsAvailable += `<img src="./src/images/pc.svg">`;
+        break;
+        case "Xbox":
+        platformsAvailable += `<img src="./src/images/xbox.svg">`;
+        break;
+        case "PlayStation":
+        platformsAvailable += `<img src="./src/images/playstation4.svg">`;
+        break;
+        case "Nintendo":
+        platformsAvailable += `<img src="./src/images/nintendo-switch.svg">`;
+        break;
+        case "Linux":
+        platformsAvailable += `<img src="./src/images/linux.svg">`;
+        break;
+        case "iOS":
+        platformsAvailable += `<img src="./src/images/iphone.png">`;
+        break;
+        case "Android":
+        platformsAvailable += `<img src="./src/images/android.png">`;
+        break;
+        case "Apple Macintosh":
+        platformsAvailable += `<img src="./src/images/macos.png">`;
+        break;
+        case "Web":
+        platformsAvailable += `<img src="./src/images/pc.png">`;
+        break;
+        default:
+        break;
+      }
+    });
+    return platformsAvailable;
+  }
+
+  const addYoutube = (youDOM, youtube) => {
+    if (youtube.length > 0) {
+      const first = youtube.shift();
+      youDOM.querySelector("h1.pageDetail__article__youtube__title").innerHTML = 'YOUTUBE';
+      youDOM.querySelector(".pageDetail__article__youfirst__container").innerHTML +=
+      `
+      <div class="pageDetail__article__youfirst__container__imagelink">
+        <a href=https://youtu.be/${first.external_id}>
+        <img class="pageDetail__article__youfirst__container__bloc__image" src="${first.thumbnails.high.url}">
+        </a>
+      </div>
+      <div class="pageDetail__article__youfirst__container__details">
+        <h3 class="pageDetail__article__youfirst__container__bloc__title>${first.name}</h3>
+        <p>${first.channel_title + " - " + dayjs(first.created).format('MMMM DD, YYYY')}</p>
+      </div>
+      `
+      youtube.map( video =>
+      youDOM.querySelector(".pageDetail__article__youtube__container").innerHTML +=
+      `
+      <div class="pageDetail__article__youtube__container__bloc">
+        <a href=https://youtu.be/${video.external_id}>
+        <img class="pageDetail__article__youtube__container__bloc__image" src="${video.thumbnails.high.url}">
+        </a>
+        <h3 class="pageDetail__article__youtube__container__bloc__title">${video.name}</h3>
+        <p> ${video.channel_title + " - " + dayjs(video.created).format('MMMM DD, YYYY')}</p>
+      </div>
+      `
+      )
+    }
+  }
 
   const render = () => {
     pageContent.innerHTML = `
@@ -117,17 +222,25 @@ const PageDetail = (argument) => {
           <div class="pageDetail__article__screenshots">
             <h1 class="pageDetail__article__screenshots__title">SCREENSHOTS</h1>
             <div class='pageDetail__article__screenshots__container'></div>
-          </div>            
+          </div>
+          <div class="pageDetail__article__youtube">
+            <h1 class="pageDetail__article__youtube__title"></h1>
+            <div class='pageDetail__article__youfirst__container'></div>
+            <div class='pageDetail__article__youtube__container'></div>
+          </div>
+          <div class="pageDetail__article__similar">
+            <h1 class="pageDetail__article__similar__title">SIMILAR GAMES</h1>
+            <div class='pageDetail__article__similar__container'></div>
+          </div>                    
         </div>
       </section>
     `;
-
     preparePage();
   };
 
   const setWelcome = () => {
         document.querySelector('.welcome').innerHTML = ``;
-    };
+  };
 
   const setbutton = () => {
       document.querySelector('.showMore').innerHTML = ``;
