@@ -1,0 +1,329 @@
+$color-red: rgb(209, 10, 49);
+$color-white: rgb(255,255,255);
+
+@font-face
+{
+    font-family: Metropolis;
+    src: url('../fonts/Metropolis/Metropolis-Thin.otf') format("opentype");
+}
+@font-face 
+{
+	font-family: MetropolisBold;
+	font-weight: bold;
+	src: url('../fonts/Metropolis/Metropolis-SemiBold.otf') format("opentype");
+}
+H1
+{
+	font-family: 'MetropolisBold';
+	color: $color-red;
+	font-size: 48px;
+}
+H2
+{
+	font-family: 'MetropolisBold';
+	color: $color-white;
+	font-size: 48px;
+}
+H3
+{
+	font-family: 'MetropolisBold';
+	color: $color-white;
+	font-size: 19px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+p
+{
+	color: $color-white;
+	font-size: 16px;
+	line-height: 1.4em;
+}
+body
+{
+	background-color: #191919;
+	font-family: 'Metropolis';
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.wrapper
+{
+	max-width: 1000px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+
+}
+.header
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left:30px;
+	padding-right:30px;
+}
+.header__item__searchbar
+{
+	border: 1px solid $color-white;
+	border-radius: 30px;
+	font-size: 18px;
+	background-color: #191919;
+	background-image:url('../images/magnifier.svg');
+	color: $color-white;
+	background-position: 10px 7px;
+	background-repeat: no-repeat;
+	padding: 8px 20px 8px 70px;
+	-webkit-transition: width 0.8s ease-in-out;
+	transition: width 0.8s ease-in-out;
+	outline: none;
+	opacity: 0.9;
+}
+footer
+{
+	align-self: flex-start;
+}
+.footer__elements
+{
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+.footer__elements__bar
+{
+	height: 10px;
+	width: 200px;
+	background-color: $color-red;
+}
+.showMore
+{
+	display:flex;
+	justify-content: center;
+}
+.showMore__showMoreButton
+{
+	background-color: $color-red;
+	font-family: 'MetropolisBold';
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+.page-list__articles
+{
+	display: flex;
+	flex-wrap: wrap;
+   	justify-content: space-between;
+}
+.page-list__articles__cardGame-platformImage
+{
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
+.page-list__articles__cardGame__container
+{
+ 	position: relative;
+ 	width: 300px;
+	height: 180px;
+	text-align: center;
+}
+.page-list__articles__cardGame__cardImage-image
+{
+	width: 300px;
+	height: 180px;
+}
+.page-list__articles__cardGame__container__layer
+{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(36, 62, 206, 0.6);
+	color: #fff;
+	visibility: hidden;
+	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  	transition: opacity .2s, visibility .2s;
+}
+.page-list__articles__cardGame__container:hover .page-list__articles__cardGame__container__layer
+{
+  visibility: visible;
+  opacity: 1;
+}
+.page-list__articles__cardGame__container__layer__description
+{
+  transition: .2s;
+  transform: translateY(1em);
+}
+.page-list__articles__cardGame__container:hover .page-list__articles__cardGame__container__layer__description
+{
+  transform: translateY(0);
+}
+.pageDetail__banner
+{
+	position: relative;
+}
+.pageDetail__banner__image
+{
+	width:100%;
+}
+.pageDetail__banner__button
+{
+	position: absolute;
+	bottom: 50px;
+	right: 50px;
+	background-color: $color-red;
+	font-family: 'MetropolisBold';
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+.pageDetail__article__head
+{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.pageDetail__article
+{
+	padding-left:30px;
+	padding-right:30px;	
+}
+.pageDetail__article__head__title
+{
+	color: $color-white;
+}
+.pageDetail__article__head__rating
+{
+	font-family: 'MetropolisBold';
+	color: $color-red;
+	font-size: 20px;
+}
+.pageDetail__article__details1
+{
+	display: flex;
+	justify-content: space-between;
+}
+.pageDetail__article__details2
+{
+	display: flex;
+	justify-content: space-between;
+}
+.pageDetail__article__buy__title
+{
+	margin-bottom: 10px;
+}
+.pageDetail__article__buy__stores__link
+{
+	color: $color-white;
+	text-decoration: underline;
+	text-decoration-color: $color-red;
+	font-size: 20px;
+}
+.pageDetail__article__trailer__video
+{
+	width: 100%;
+}
+.pageDetail__article__screenshots__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__screenshots__container__image
+{
+	width: 48%;
+	margin-bottom: 40px;
+}
+.pageDetail__article__youfirst__container
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__youfirst__container__imagelink
+{
+	width: 48%;
+}
+.pageDetail__article__youfirst__container__bloc__image
+{
+	width: 100%;
+}
+.pageDetail__article__youfirst__container__details
+{
+	width: 48%;
+
+}
+.pageDetail__article__youtube__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__youtube__container__bloc
+{
+	width: 30%;
+}
+.pageDetail__article__youtube__container__bloc__image
+{
+	width: 100%;
+	margin-top: 20px;
+}
+.pageDetail__article__similar__container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.pageDetail__article__similar__container__bloc
+{
+	width: 30%;
+}
+.pageDetail__article__similar__container__bloc__image
+{
+	width: 100%;
+}
+@media (max-width: 800px) 
+{
+	.header
+	{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+	.header__item__searchbar
+	{
+		margin-bottom: 30px;
+	}
+	.pageDetail__article__head
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		backgound-color: $color-white;
+	}
+	.pageDetail__article__head__title
+	{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.pageDetail__article__screenshots__container__image
+	{
+		width: 45%;
+	}
+}
